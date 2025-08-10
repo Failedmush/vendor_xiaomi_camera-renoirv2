@@ -1,8 +1,10 @@
-allow platform_app app_data_file:file execute;
-allow platform_app vendor_hal_camerapostproc_xiaomi_hwservice:hwservice_manager find;
-
-binder_call(platform_app, hal_camera_default)
-
-get_prop(platform_app, vendor_camera_prop)
-get_prop(platform_app, vendor_fp_prop)
-get_prop(platform_app, vendor_display_prop)
+allow platform_app servicemanager binder { call transfer }
+# Allow servicemanager to send out callbacks
+allow servicemanager platform_app binder { call transfer }
+# servicemanager performs getpidcon on clients.
+allow servicemanager platform_app dir search
+allow servicemanager platform_app file { read open }
+allow servicemanager platform_app process getattr;
+# rw access to /dev/binder and /dev/ashmem is presently granted to
+# all domains in domain.te.
+###
