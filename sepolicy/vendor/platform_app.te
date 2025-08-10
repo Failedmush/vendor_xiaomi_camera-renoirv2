@@ -3,12 +3,6 @@ allow platform_app vendor_hal_camerapostproc_xiaomi_hwservice:hwservice_manager 
 
 binder_call(platform_app, hal_camera_default)
 
-###get_prop(vendor_display_prop)
-allow platform_app vendor_display_prop file read
-###
-###get_prop(vendor_displayfeature_prop)
-allow platform_app vendor_displayfeature_prop file { getattr open read map }
-###
-###get_prop(vendor_panel_info_prop)
-allow platform_app vendor_panel_info_prop file { getattr open read map }
-###
+get_prop(platform_app, vendor_camera_prop)
+get_prop(platform_app, vendor_fp_prop)
+get_prop(platform_app, vendor_display_prop)
