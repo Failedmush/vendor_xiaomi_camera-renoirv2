@@ -4,7 +4,7 @@
 
 soong_namespace {
 	imports: [
-                "vendor/xiaomi/camera",
+		"vendor/xiaomi/camera",
 	],
 }
 
@@ -17,7 +17,7 @@ cc_prebuilt_library_shared {
 	target: {
 		android_arm64: {
 			srcs: ["proprietary/system/lib64/libcamera_algoup_jni.xiaomi.so"],
-			shared_libs: ["libgui-xiaomi","libgui_shim_miuicamera", "libandroid", "libandroid_runtime", "libbase", "libbinder", "libcamera_client", "libcamera_metadata", "libcutils", "libgui", "liblog", "libmedia_jni_utils", "libnativehelper", "libnativewindow", "libui", "libutils", "libvndksupport", "android.hidl.token@1.0-utils", "libc++", "libc", "libm", "libdl", ],
+			shared_libs: ["libgui-xiaomi", "libgui_shim_miuicamera", "libandroid", "libandroid_runtime", "libbase", "libbinder", "libcamera_client", "libcamera_metadata", "libcutils", "libgui", "liblog", "libmedia_jni_utils", "libnativehelper", "libnativewindow", "libui", "libutils", "libvndksupport", "android.hidl.token@1.0-utils", "libc++", "libc", "libm", "libdl", ],
 		},
 	},
 	compile_multilib: "64",
@@ -33,7 +33,7 @@ cc_prebuilt_library_shared {
 	target: {
 		android_arm64: {
 			srcs: ["proprietary/system/lib64/libcamera_mianode_jni.xiaomi.so"],
-			shared_libs: ["libgui-xiaomi","libgui_shim_miuicamera", "libandroid", "libbinder", "libcamera_client", "libcamera_metadata", "libcutils", "libgui", "liblog", "libmedia_jni_utils", "libui", "libutils", "libvndksupport", "libxml2", "libc++", "libc", "libm", "libdl", ],
+			shared_libs: ["libgui-xiaomi", "libgui_shim_miuicamera", "libandroid", "libbinder", "libcamera_client", "libcamera_metadata", "libcutils", "libgui", "liblog", "libmedia_jni_utils", "libui", "libutils", "libvndksupport", "libxml2", "libc++", "libc", "libm", "libdl", ],
 		},
 	},
 	compile_multilib: "64",
@@ -49,7 +49,7 @@ cc_prebuilt_library_shared {
 	target: {
 		android_arm64: {
 			srcs: ["proprietary/system/lib64/libgui-xiaomi.so"],
-			shared_libs: ["libbinder_shim", "libgralloctypes", "android.hardware.graphics.mapper@4.0", "android.hardware.graphics.common-V6-ndk", "android.hardware.graphics.bufferqueue@1.0", "android.hardware.graphics.bufferqueue@2.0", "android.hardware.graphics.common@1.1", "android.hardware.graphics.common@1.2", "android.hidl.token@1.0-utils", "libbase", "libcutils", "libEGL", "libGLESv2", "libhidlbase", "liblog", "libnativewindow", "libsync", "libui", "libutils", "libvndksupport", "libbinder", "libc++", "libc", "libm", "libdl", ],
+			shared_libs: ["libbinder_shim", "libgralloctypes", "android.hardware.graphics.mapper@4.0", "android.hardware.graphics.common-V5-ndk", "android.hardware.graphics.bufferqueue@1.0", "android.hardware.graphics.bufferqueue@2.0", "android.hardware.graphics.common@1.1", "android.hardware.graphics.common@1.2", "android.hidl.token@1.0-utils", "libbase", "libcutils", "libEGL", "libGLESv2", "libhidlbase", "liblog", "libnativewindow", "libsync", "libui", "libutils", "libvndksupport", "libbinder", "libc++", "libc", "libm", "libdl", ],
 		},
 	},
 	compile_multilib: "64",
@@ -65,7 +65,7 @@ cc_prebuilt_library_shared {
 	target: {
 		android_arm64: {
 			srcs: ["proprietary/system/lib64/libmicampostproc_client.so"],
-			shared_libs: ["liblog", "libutils", "libcutils", "libhardware", "libnativewindow", "libEGL", "libGLESv2", "libfmq", "libgui", "libui", "libcamera_client", "libcamera_metadata", "libmedia_jni_utils", "libnativehelper", "libhidlbase", "libhidltransport", "vendor.xiaomi.hardware.campostproc@1.0-system", "libc++", "libc", "libm", "libdl", ],
+			shared_libs: ["liblog", "libutils", "libcutils", "libhardware", "libnativewindow", "libEGL", "libGLESv2", "libfmq", "libgui", "libui", "libcamera_client", "libcamera_metadata", "libmedia_jni_utils", "libnativehelper", "libhidlbase", "libhidltransport", "vendor.xiaomi.hardware.campostproc@1.0", "libc++", "libc", "libm", "libdl", ],
 		},
 	},
 	compile_multilib: "64",
@@ -73,8 +73,7 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-	name: "vendor.xiaomi.hardware.campostproc@1.0-system",
-	stem: "vendor.xiaomi.hardware.campostproc@1.0",
+	name: "vendor.xiaomi.hardware.campostproc@1.0",
 	owner: "xiaomi",
 	strip: {
 		none: true,
@@ -93,7 +92,7 @@ android_app_import {
 	name: "MiuiCamera",
 	owner: "xiaomi",
 	apk: "proprietary/system/priv-app/MiuiCamera/MiuiCamera.apk",
-	overrides: ["Aperture", "Camera", "Camera2", "Flash", "GoogleCameraGo"],
+	overrides: ["Aperture", "Camera", "Camera2", "GoogleCameraGo"],
 	certificate: "platform",
 	dex_preopt: {
 		enabled: false,
