@@ -1,3 +1,4 @@
+# Call the servicemanager and transfer references to it.
 allow platform_app servicemanager binder { call transfer }
 # Allow servicemanager to send out callbacks
 allow servicemanager platform_app binder { call transfer }
@@ -8,3 +9,38 @@ allow servicemanager platform_app process getattr;
 # rw access to /dev/binder and /dev/ashmem is presently granted to
 # all domains in domain.te.
 ###
+
+###binder_call(platform_app, vendor_hal_camerapostproc_xiaomi)
+allow platform_app vendor_hal_camerapostproc_xiaomi binder { call transfer }
+allow vendor_hal_camerapostproc_xiaomi platform_app binder transfer
+allow platform_app vendor_hal_camerapostproc_xiaomi fd *
+###
+
+### allow android to find camerapostproc service
+allow platform_app vendor_hal_camerapostproc_xiaomi_hwservice hwservice_manager find
+allow priv_app vendor_hal_camerapostproc_xiaomi_hwservice hwservice_manager find
+###
+
+###binder_call(platform_app, hal_camera_default)
+allow platform_app hal_camera_default binder { call transfer }
+allow hal_camera_default platform_app binder { call transfer }
+allow platform_app hal_camera_default fd *
+###
+
+###binder_call(priv_app, hal_camera_default)
+allow priv_app hal_camera_default binder { call transfer }
+allow hal_camera_default priv_app binder { call transfer }
+allow priv_app hal_camera_default fd *
+###
+
+allow platform_app adsprpcd_file dir { getattr open read search }
+allow platform_app adsprpcd_file file { getattr open read }
+allow platform_app vendor_xdsp_device chr_file { ioctl open read write }
+allow platform_app vendor_qdsp_device chr_file { ioctl open read write }
+
+allow platform_app vendor_camera_data_file dir { append map r_dir_perms write }
+allow platform_app vendor_camera_data_file file { getattr open read }
+
+allow platform_app app_data_file file execute
+
+allow hal_camera_default vendor_xdsp_device chr_file { ioctl open read write }
